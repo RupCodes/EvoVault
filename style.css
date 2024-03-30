@@ -8,6 +8,7 @@
   --font-color: rgb(0, 0, 0);
   --nav-background: rgb(221, 221, 221);
   --shadow-color: rgb(0, 0, 0, 0.17);
+  --neon-btn-color: rgba(222, 56, 255, 0.8);
 }
 
 .darkMode {
@@ -15,6 +16,7 @@
   --font-color: rgb(238, 238, 238);
   --nav-background: rgb(34, 34, 34);
   --shadow-color: rgb(238, 238, 238, 0.1);
+  --neon-btn-color: rgba(222, 56, 255, 1);
 }
 
 /* Scroll Css */
@@ -112,6 +114,7 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
+  row-gap: 2rem;
   height: calc(100vh - 50px);
   justify-content: center;
   align-items: center;
@@ -145,7 +148,7 @@ header {
 
 #hero .decorElements > .decor:nth-child(2) {
   position: absolute;
-  background-color: rgba(0, 166, 255, 0.8);
+  background-color: rgba(230, 0, 255, 0.8);
   height: 12rem;
   width: 7rem;
   border-radius: 60px;
@@ -180,8 +183,8 @@ header {
 .textCapsule {
   display: flex;
   column-gap: 12px;
-  background-color: var(--font-color);
-  color: var(--background-color);
+  background-color: white;
+  color: black;
   border: 2px solid rgba(0, 166, 255, 0.8);
   padding: 8px 15px;
   border-radius: 25px;
@@ -190,7 +193,7 @@ header {
   font-weight: 500;
   font-family: Open San, sans-serif;
   box-sizing: border-box;
-  box-shadow: 0px 1px 12px rgba(0, 166, 255, 0.8);
+  box-shadow: 0px 1px 12px rgba(0, 166, 255, 1);
   z-index: 10;
 }
 
@@ -203,6 +206,62 @@ header {
   font-size: 50px;
   font-weight: 900;
   z-index: 10;
+}
+
+.neonButton {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--neon-btn-color);
+  text-decoration: none;
+  padding: 0.4rem 2rem;
+  border-radius: 0.25em;
+  border: 0.125em solid var(--neon-btn-color);
+  box-shadow: inset 0 0 0.5em 0 var(--neon-btn-color), 0 0 0.5em 0 var(--neon-btn-color);
+  text-shadow: 0 0 0.125em rgba(187, 187, 187, 0.3), 0 0 0.45em var(--neon-btn-color);
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+.neonButton::before, .neonButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  transition: opacity 0.2s linear;
+}
+
+.neonButton::before {
+  background: var(--neon-btn-color);
+  top: 120%;
+  height: 100%;
+  filter: blur(1em);
+  transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+  opacity: 0.7;
+  scale: 2;
+  pointer-events: none;
+}
+
+.neonButton::after {
+  bottom: 0;
+  right: 0;
+  background-color: var(--neon-btn-color);
+  box-shadow: 0 0 2em 0.5em var(--neon-btn-color);
+  opacity: 0;
+}
+
+.neonButton:hover, .neonButton:focus {
+  color: var(--font-color);
+  text-shadow: none;
+}
+
+.neonButton:hover::before, .neonButton:focus::before, .neonButton:hover::after, .neonButton:focus::after {
+  opacity: 1;
 }
 
 
