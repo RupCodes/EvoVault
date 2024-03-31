@@ -1,8 +1,8 @@
 function load() {
   let body = document.getElementsByTagName('body')[0];
 
-  // Check Preferred Color Scheme
-  detectColorScheme(body);
+  // Check Preferred Color Scheme (Light mode: work in progress)
+  // detectColorScheme(body);
 }
 
 /**

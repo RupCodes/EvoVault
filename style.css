@@ -55,6 +55,10 @@ body {
     color: var(--font-color)
 }
 
+.sidePadding {
+  padding: 0px 50px;
+}
+
 /* Navbar Css */
 header {
   position: relative;
@@ -70,7 +74,7 @@ header {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 40px;
+  padding: 5px 50px;
   box-sizing: border-box;
   -webkit-box-shadow: 0px 3px 7px 0px var(--shadow-color);
   -moz-box-shadow: 0px 3px 7px 0px var(--shadow-color);
@@ -233,7 +237,7 @@ header {
   left: 0;
   width: 100%;
   z-index: -1;
-  transition: opacity 0.2s linear;
+  transition: opacity 0.2s cubic-bezier(.41,2.06,.46,-1.03);
 }
 
 .neonButton::before {
@@ -281,6 +285,174 @@ header {
   -1px 1px 0 #ffffff,
    1px 1px 0 #ffffff;
 }
+
+
+/* Scroll In Section */
+#scrollInSection {
+  position: relative;
+  height: 300vh;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, var(--background-color), rgba(0, 166, 255, 0.05), rgba(222, 56, 255, 0.05), var(--background-color));
+  overflow-x: clip;
+}
+
+#scrollInSection .decorElements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#scrollInSection .decorElements > .decor { 
+  position: absolute;
+  top: -20%;
+  left: -50%;
+  width: 20rem;
+  aspect-ratio: 1/1;
+  background: url('./assets/decors/planet-gif.gif');
+  background-size: contain;
+  scale: 0;
+  opacity: 0;
+  animation: planetScrollIn cubic-bezier(.6,.18,.39,.75) forwards;
+  animation-timeline: scroll();
+  animation-range-start: 20%;
+  transition: 0.3 all ease;
+}
+
+#scrollInSection .stickyContainer {
+  position: sticky;
+  left: 0%;
+  top: 25%;
+  bottom: 25%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.stickyContainer .scrollInLeft, .stickyContainer .scrollInRight {
+  animation: scrollIn cubic-bezier(.6,.18,.39,.75) forwards;
+  animation-timeline: scroll();
+  animation-range-start: 10%;
+  animation-range-end: 70%;
+  opacity: 0;
+}
+
+.stickyContainer .scrollInLeft {
+  transform: translateX(-200%);
+  flex-basis: 29%;
+}
+.stickyContainer .scrollInRight {
+  transform: translateX(200%);
+  flex-basis: 59%;
+}
+
+.stickyContainer .scrollInLeft .evoShoeImg {
+  height: 100%;
+  aspect-ratio: 1/1; /* Square */
+  background-color: rgba(222, 56, 255, 0.6);
+  background-image: url('./assets/shoes/EvoShoe.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 19px;
+  border: 2px solid rgba(0, 166, 255, 1);
+  transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
+}
+
+.stickyContainer .scrollInLeft .evoShoeImg:hover {
+  background-blend-mode:luminosity 
+}
+
+.stickyContainer .scrollInLeft .evoShoeImg:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(120deg, rgba(0, 166, 255, 0.7), rgba(0, 251, 255, 0.7), rgba(222, 56, 255, 0.7),rgba(0, 251, 255, 0.7));
+  border-radius: 20px;
+  z-index: -1;
+  animation: animatedgradient ease alternate forwards;
+  animation-timeline: view();
+  animation-range-start: 50%;
+  scale: 0.9;
+  background-size: 200% 200%;
+}
+
+.evoTextContainer p {
+  font-size: 1.2em;
+}
+
+.evoTextContainer h2 {
+  font-size: 1.5em;
+}
+
+
+.evoTextContainer .highlightWord {
+  font-weight: 700;
+  background: linear-gradient(90deg, rgb(39, 179, 255), rgb(228, 94, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@keyframes animatedgradient {
+	0% {
+    scale: 0.9;
+		background-position: 0% 50%;
+    transform: rotate(0deg);
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+    scale: 1;
+		background-position: 0% 50%;
+    transform: rotate(240deg);
+	}
+}
+
+@keyframes planetScrollIn {
+  0% {
+    left: -50%;
+    top: -20%;
+    scale: 0;
+    opacity: 0;
+    filter: blur(10px);
+  }
+  50% {
+    left: 45%;
+    top: 30%;
+    scale: 0.75;
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  100% {
+    left: 95%;
+    top: 80%;
+    scale: 2;
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+}
+
+
+/* Scroll In Frames */
+
+@keyframes scrollIn {
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+
+
 
 /* Outline for modern browsers (supported browsers) */
 @supports((text-stroke: 4px white) or (-webkit-text-stroke: 4px white)) {
