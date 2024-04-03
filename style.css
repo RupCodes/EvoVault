@@ -372,7 +372,7 @@ header {
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  aspect-ratio: 1/1;
   background: linear-gradient(120deg, rgba(0, 166, 255, 0.7), rgba(0, 251, 255, 0.7), rgba(222, 56, 255, 0.7),rgba(0, 251, 255, 0.7));
   border-radius: 20px;
   z-index: -1;
@@ -493,6 +493,53 @@ footer {
   background-color: #7dcbff;
 }
 
+#contactSection {
+  min-height: 100vh;
+  margin-top: 2rem;
+}
+
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, var(--background-color), #cacaca12);
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid var(--font-color);
+  margin: auto;
+  box-sizing: border-box;
+}
+
+#contactForm input, #contactForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  box-sizing: border-box;
+}
+
+#contactForm p {
+  font-size: 0.9em;
+  color: red;
+  margin-bottom: 1rem;
+}
+
+#contactForm button {
+  background-color: #008aec;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
+}
+#contactForm button:hover {
+  background-color: #0058cc;
+}
+
 @keyframes animatedgradient {
 	0% {
     scale: 0.9;
@@ -576,11 +623,28 @@ footer {
 
 /* Media Queries */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   #scrollInSection > .stickyContainer {
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     row-gap: 4rem;
+  }
+
+  #scrollInSection > .stickyContainer .scrollInLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #scrollInSection > .stickyContainer .scrollInLeft .evoShoeImg {
+    position: relative;
+    height: calc(100vh/3);
+  }
+
+  #scrollInSection > .stickyContainer .scrollInLeft .evoShoeImg::after {
+    position: absolute;
+    height: calc(100vh/3);
   }
 }
 

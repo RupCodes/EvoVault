@@ -11,7 +11,93 @@ function load() {
   // Fetch Shoes
   fetchShoes();
   };
+
+  // Check if Its Contact Page
+  if(currentPage.startsWith('contact')) {
+    // Listener for Submit Button
+    document.getElementById("contactForm").addEventListener("submit", validateForm);
+    };
 }
+
+/** 
+ * Checks Form Errors
+ */
+function validateForm(e) {
+let hasError = false;
+
+    // Clear Errors
+    clearErrors()
+
+  let contactForm = document.getElementById('contactForm');
+  let fields = ['name', 'email', 'subject', 'message'];
+
+  fields.forEach(fieldKey => {
+  let field = document.getElementById(`contactForm-${fieldKey}`);
+
+    if(!fieldHasInput(field)) {
+      let error = document.createElement('p');
+
+      error.innerHTML = 'Required Field*';
+
+      contactForm.insertBefore(error, field.nextSibling); // nextSibling: Gets the next child after current one
+
+      if(!hasError) {
+        field.focus();
+        field.select();
+        hasError = true;
+      }
+    }
+
+    if((fieldKey == 'email') && fieldHasInput(field)) {
+      let emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)
+
+      if(!emailRegex.test(field.value)) {
+
+        let error = document.createElement('p');
+
+        error.innerHTML = 'Invalid Email*';
+  
+        contactForm.insertBefore(error, field.nextSibling); // nextSibling: Gets the next child after current one
+  
+        if(!hasError) {
+          field.focus();
+          field.select();
+          hasError = true;
+        }
+
+      }
+    }
+
+  })
+
+  if(hasError) {
+    e.preventDefault();
+  }
+
+  return (!hasError);
+}
+
+/** Clear Errors */
+
+function clearErrors() {
+  let contactForm = document.getElementById('contactForm');
+  let pTags = contactForm.querySelectorAll('p');
+  
+  pTags.forEach(pTag => pTag.remove());
+}
+
+
+/**
+ * Checks Field Input
+ */
+function fieldHasInput(field) {
+	if (field.value == null || field.value.trim() == "") {
+		return false;
+	}
+
+	return true;
+}
+
 /**
  * Fetches Shoes from JSON
  * 
