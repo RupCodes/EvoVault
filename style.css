@@ -401,6 +401,98 @@ header {
   color: transparent;
 }
 
+footer {
+  background: var(--background-color);
+  margin-top: 100px;
+}
+
+#pageHeading {
+  margin-left: 50px;
+  margin-top: 1em;
+}
+
+#productSection {
+  display: grid;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 3rem;
+  min-height: 100vh;
+}
+
+#productSection .productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh/2);
+  aspect-ratio: 2/2.7;
+  border-radius: 15px;
+  border: 2px solid var(--font-color);
+  background: linear-gradient(145deg, var(--background-color), #cacaca12);
+  box-shadow: 2px 2px 6px #bebebe,
+             -2px -2px 6px #ffffff;
+  backdrop-filter: blur(20px);
+  transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
+  opacity: 0;
+  animation: 0.5s cardEaseIn cubic-bezier(.6,.18,.39,.75) forwards;
+  animation-delay: 200ms;
+}
+
+
+@keyframes cardEaseIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.productCard img {
+  width: 90%;
+  aspect-ratio: 1/1.1;
+  object-fit: cover;
+  border: 2px solid var(--font-color);
+  border-radius: 15px;
+  margin-top: 1rem;
+}
+
+.productCard .topDiv {
+  padding: 0.3em 0.4em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+}
+
+.productCard .topDiv p:nth-child(1) {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+#productSection .productCard:hover {
+  scale: 1.02;
+}
+
+.productCard button {
+  width: 100%;
+  height: 100%;
+  margin-top: 0.2em;
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 2px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
+  background-color: var(--neon-btn-color);
+}
+
+.productCard button:hover {
+  font-size: 1em;
+  letter-spacing: 3px;
+  background-color: #7dcbff;
+}
+
 @keyframes animatedgradient {
 	0% {
     scale: 0.9;
@@ -475,5 +567,9 @@ header {
 @media (prefers-reduced-motion) {
   #hero .decorElements > * {
   animation: none;
+  }
+
+  #productSection .productCard {
+    animation: none;
   }
 }

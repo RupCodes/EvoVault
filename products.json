@@ -1,0 +1,38 @@
+[
+    {
+      "name": "EvoClassic",
+      "price": 390.99,
+      "image": "EvoShoe.png"
+    },
+    {
+      "name": "EvoBurst",
+      "price": 259.99,
+      "image": "1.jpg"
+    },
+    {
+      "name": "EvoLight",
+      "price": 472.99,
+      "image": "2.jpg"
+    },
+    {
+      "name": "EvoComfort",
+      "price": 333.99,
+      "image": "3.jpg"
+    },
+    {
+      "name": "EvoAir",
+      "price": 205.99,
+      "image": "4.jpg"
+    },
+    {
+      "name": "EvoRunner",
+      "price": 590.99,
+      "image": "5.jpg"
+    },
+    {
+      "name": "EvoUltra",
+      "price": 278.99,
+      "image": "6.jpg"
+    }
+  ]
+  
