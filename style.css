@@ -207,7 +207,7 @@ header {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
+  font-size: clamp(2rem, 3rem, 4rem);
   font-weight: 900;
   z-index: 10;
 }
@@ -571,5 +571,36 @@ footer {
 
   #productSection .productCard {
     animation: none;
+  }
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+  #scrollInSection > .stickyContainer {
+    flex-direction: column;
+    text-align: center;
+    row-gap: 4rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #productSection {
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #productSection {
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #productSection {
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
