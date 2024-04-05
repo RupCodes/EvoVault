@@ -737,6 +737,11 @@ background: var(--nav-background);
 }
 
 @media only screen and (max-width: 700px) {
+
+  #navbar {
+    padding: 5px 20px;
+  }
+
   .navLinks .hamburger {
     display: block;
   }
