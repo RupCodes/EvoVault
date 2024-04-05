@@ -16,6 +16,8 @@ function load() {
   if(currentPage.startsWith('contact')) {
     // Listener for Submit Button
     document.getElementById("contactForm").addEventListener("submit", validateForm);
+
+    document.getElementById("contactForm").addEventListener("reset", clearErrors);
     };
 }
 
@@ -29,7 +31,7 @@ let hasError = false;
     clearErrors()
 
   let contactForm = document.getElementById('contactForm');
-  let fields = ['name', 'email', 'subject', 'message'];
+  let fields = ['name', 'email', 'phone', 'subject', 'message'];
 
   fields.forEach(fieldKey => {
   let field = document.getElementById(`contactForm-${fieldKey}`);
@@ -48,12 +50,32 @@ let hasError = false;
       }
     }
 
+    if(((fieldKey == 'phone') && fieldHasInput(field))) {
+      let phoneNumRegex = new RegExp(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/g);
+
+      if(!phoneNumRegex.test(field.value)) {
+
+        let error = document.createElement('p');
+
+        error.innerHTML = 'Invalid Phone Number*';
+  
+        contactForm.insertBefore(error, field.nextSibling); // nextSibling: Gets the next child after current one
+  
+        if(!hasError) {
+          field.focus();
+          field.select();
+          hasError = true;
+        }
+
+      }
+    }
+
     if((fieldKey == 'email') && fieldHasInput(field)) {
-      let emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)
+      let emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
 
       if(!emailRegex.test(field.value)) {
 
-        let error = document.createElement('p');
+        let error = document.createElement('p').className;
 
         error.innerHTML = 'Invalid Email*';
   

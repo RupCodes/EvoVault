@@ -113,6 +113,11 @@ header {
   font-weight: 600;
 }
 
+/* NavLink Focus Effect */
+#navBar > ul > li > a:focus {
+  color: #008aec;
+}
+
 /* Hero Section */
 #hero {
   position: relative;
@@ -518,12 +523,29 @@ footer {
   background-color: #333;
   color: white;
   box-sizing: border-box;
+  transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
+  outline: none;
+}
+
+#contactForm input:focus, #contactForm textarea:focus {
+  outline: 2px solid #008aec;
 }
 
 #contactForm p {
   font-size: 0.9em;
   color: red;
   margin-bottom: 1rem;
+}
+
+#contactForm > textarea {
+  resize: none;
+}
+
+#contactForm .buttonRow {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 #contactForm button {
@@ -536,8 +558,54 @@ footer {
   font-size: 16px;
   transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
 }
+
 #contactForm button:hover {
   background-color: #0058cc;
+}
+
+#pageFooter {
+height: 10vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: var(--nav-background);
+}
+
+#pageFooter >  ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#pageFooter > ul > li {
+  padding: 0.05em 0.4em;
+  margin-right: 0em 0.4em;
+  border-right: 2px solid var(--font-color);
+}
+
+#pageFooter > ul > li:last-child {
+  border-right: none;
+}
+
+#pageFooter > ul > li > a {
+  font-size: 0.8em;
+  color: var(--font-color);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+#pageFooter > ul > li > a:hover {
+  color: #008aec;
+}
+
+#pageFooter > ul > li > a:focus {
+  color: #004dc0;
+}
+
+#pageFooter p {
+  align-self: flex-start;
 }
 
 @keyframes animatedgradient {
