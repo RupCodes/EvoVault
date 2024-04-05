@@ -5,6 +5,9 @@ function load() {
   // Check Preferred Color Scheme (Light mode: work in progress)
   // detectColorScheme(body);
 
+  // Toggle Hamburger Menu
+  document.getElementById('hamburgerBtn').addEventListener('click', toggleHamburger);
+
   // Check if its Product Page 
   if(currentPage.startsWith('products')) {
 
@@ -19,6 +22,23 @@ function load() {
 
     document.getElementById("contactForm").addEventListener("reset", clearErrors);
     };
+}
+
+/**
+ * Toggles Hamburger Menu
+ */
+function toggleHamburger() {
+  let links = document.getElementById('hamburgerLinks');
+  let nlinks = document.getElementById('normalLinks');
+  
+  if(links.style.display == 'flex') {
+    links.style.display = 'none';
+    nlinks.style.display = 'flex';
+  } else {
+    links.style.display = 'flex';
+    nlinks.style.display = 'none';
+  }
+
 }
 
 /** 

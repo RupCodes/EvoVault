@@ -88,7 +88,17 @@ header {
   flex-basis: 20%;
 }
 
-#navBar > ul {
+.navLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navLinks .hamburger, #hamburgerLinks {
+  display: none;
+}
+
+.navLinks > ul {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -96,11 +106,11 @@ header {
   flex-basis: 80%;
 }
 
-#navBar > ul > li {
+.navLinks > ul > li {
   list-style: none;
 }
 
-#navBar > ul > li > a {
+.navLinks > ul > li > a {
   font-size: 1.2rem;
   color: var(--font-color);
   text-decoration: none;
@@ -108,13 +118,13 @@ header {
 }
 
 /* NavLink Hover Effect */
-#navBar > ul > li > a:hover {
+.navLinks > ul > li > a:hover {
   font-size: 1.4rem;
   font-weight: 600;
 }
 
 /* NavLink Focus Effect */
-#navBar > ul > li > a:focus {
+.navLinks > ul > li > a:focus {
   color: #008aec;
 }
 
@@ -212,7 +222,7 @@ header {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  font-size: clamp(2rem, 3rem, 4rem);
+  font-size: clamp(2.2rem, 45px, 6rem);
   font-weight: 900;
   z-index: 10;
 }
@@ -555,7 +565,8 @@ footer {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1em;
+  margin-right: 0.25em;
   transition: 0.3s all cubic-bezier(.6,.18,.39,.75);
 }
 
@@ -569,6 +580,8 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+padding: 2px 4px;
+box-sizing: border-box;
 background: var(--nav-background);
 }
 
@@ -577,6 +590,9 @@ background: var(--nav-background);
   list-style: none;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #pageFooter > ul > li {
@@ -713,6 +729,20 @@ background: var(--nav-background);
   #scrollInSection > .stickyContainer .scrollInLeft .evoShoeImg::after {
     position: absolute;
     height: calc(100vh/3);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .navLinks .hamburger {
+    display: block;
+  }
+  
+  .navLinks ul:last-child {
+    display: none;
+  }
+
+  .navLinks #hamburgerLinks > li > a {
+    font-size: 0.7em;
   }
 }
 
