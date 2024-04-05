@@ -94,7 +94,7 @@ header {
   align-items: center;
 }
 
-.navLinks .hamburger, #hamburgerLinks {
+.navLinks .hamburger, .navLinks #hamburgerLinks {
   display: none;
 }
 
@@ -624,6 +624,10 @@ background: var(--nav-background);
   align-self: flex-start;
 }
 
+.showLinks {
+  display: none;
+}
+
 @keyframes animatedgradient {
 	0% {
     scale: 0.9;
@@ -739,6 +743,10 @@ background: var(--nav-background);
   
   .navLinks ul:last-child {
     display: none;
+  }
+
+  .showLinks {
+    display: flex !important;
   }
 
   .navLinks #hamburgerLinks > li > a {

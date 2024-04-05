@@ -29,17 +29,9 @@ function load() {
  */
 function toggleHamburger() {
   let links = document.getElementById('hamburgerLinks');
-  let nlinks = document.getElementById('normalLinks');
   
-  if(links.style.display == 'flex') {
-    links.style.display = 'none';
-    nlinks.style.display = 'flex';
-  } else {
-    links.style.display = 'flex';
-    nlinks.style.display = 'none';
+  links.classList.toggle('showLinks')
   }
-
-}
 
 /** 
  * Checks Form Errors
