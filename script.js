@@ -1,13 +1,11 @@
 function load() {
-  var currentPage = window.location.href.split('/')[3];
-  let body = document.getElementsByTagName('body')[0];
-
+  var currentLocation = window.location.href.split('/');
+  var currentPage = currentLocation[currentLocation.length - 1];
   // Check Preferred Color Scheme (Light mode: work in progress)
   // detectColorScheme(body);
 
   // Toggle Hamburger Menu
   document.getElementById('hamburgerBtn').addEventListener('click', toggleHamburger);
-
   // Check if its Product Page 
   if(currentPage.startsWith('products')) {
 
